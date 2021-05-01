@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "d5ba10b3-86c8-4c18-abf6-27ed92092c22",
+		"name": "ASSESMENT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://v6.exchangerate-api.com/v6/1fc80820c72b0163bc9c7536/latest/USD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "613e0976-5c6f-489f-9928-f08e5c239c2f",
+						"exec": [
+							"pm.test(\"Verify the status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verify the currency GBP in response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"GBP\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"const responseJson = pm.response.json();\r",
+							"var count = Object.keys(responseJson.conversion_rates).length;\r",
+							"tests[\"Response Body\",\"The total number of currencies returned within the response is \" +     count] = true;\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://v6.exchangerate-api.com/v6/1fc80820c72b0163bc9c7536/latest/USD",
+					"protocol": "https",
+					"host": [
+						"v6",
+						"exchangerate-api",
+						"com"
+					],
+					"path": [
+						"v6",
+						"1fc80820c72b0163bc9c7536",
+						"latest",
+						"USD"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
